@@ -2,9 +2,7 @@
  
   renderer: Renderer;
   
-  //TODO (INTERFACES EXERCISE)
-  //1. Change the type to use IRecipeCategory instead of RecipeCategory.
-  recipeCategories: RecipeCategories<RecipeCategory>;
+  recipeCategories: RecipeCategories<IRecipeCategory>;
 
   loadRecipes() {
       var el = (<HTMLSelectElement> document.getElementById('RecipeCategory'));
@@ -15,14 +13,7 @@
               //return the item
               .reduce(item => {
                 
-                //TODO (CONSTRUCTORS EXERCISE)
-                //Change the RecipeCategory code below so that the property values are
-                //passed into the constructor rather than set individually.
-                var rc = new RecipeCategory();
-                rc.name = el.value,
-                rc.foodGroups = item.foodGroups,
-                rc.description = item.description,
-                rc.examples = item.examples
+                var rc = new RecipeCategory(item);
                 return rc;                
               });
           this.renderer.renderCategory(category);
@@ -49,9 +40,4 @@ window.onload = () => {
   var bootstrapper = new Bootstrapper();
   bootstrapper.init();
 };
-
-  
-
-
-
 

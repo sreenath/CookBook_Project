@@ -17,8 +17,6 @@ var Renderer = (function () {
             recipeSelect.appendChild(opt);
         });
     };
-    //TODO (INTERFACES EXERCISE)
-    //1. Change the category parameter type to IRecipeCategory
     Renderer.prototype.renderCategory = function (category) {
         //Update foodgroups bullet points
         var foodGroups = document.getElementById('FoodGroups');
@@ -33,8 +31,6 @@ var Renderer = (function () {
         el.innerHTML = category.description;
         this.renderExamples(category);
     };
-    //TODO (INTERFACES EXERCISE)
-    //1. Change the category parameter type to IRecipeCategory
     Renderer.prototype.renderExamples = function (category) {
         //Update examples
         var examples = document.getElementById('examples');

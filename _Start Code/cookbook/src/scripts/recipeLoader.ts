@@ -20,24 +20,19 @@ class RecipeLoader {
         if (data) {
             let categories: any[] = data.recipeCategories;
             
-            //TODO (INTERFACES EXERCISE)
-            //Pass IRecipeCategory as the type to the generic below
-            var recipeCategories = new RecipeCategories<RecipeCategory>();
+            var recipeCategories = new RecipeCategories<IRecipeCategory>();
             
-            //TODO (INTERFACES EXERCISE)
-            //Pass IRecipeCategorySummary as the type to the generic below
-            var recipeCategoriesSummary = new RecipeCategories<RecipeCategorySummary>();
+            var recipeCategoriesSummary = new RecipeCategories<IRecipeCategorySummary>();
             
             categories.forEach((category: any) => {
               
-                //TODO (CONSTRUCTORS EXERCISE)
-                //Change the RecipeCategory code below so that the property values are
-                //passed into the constructor rather than set individually.
-                let recipeCategory = new RecipeCategory();
-                recipeCategory.name = category.title;
-                recipeCategory.foodGroups = this.getFoodGroups(category),
-                recipeCategory.description = category.details,
-                recipeCategory.examples = this.getExamples(category);
+                let recipeCategory = new RecipeCategory(
+                    { 
+                        name: category.title, 
+                        description: category.details, 
+                        examples: this.getExamples(category), 
+                        foodGroups: this.getFoodGroups(category)
+                    });
                 
                 recipeCategories.items.push(recipeCategory);
 
@@ -62,11 +57,7 @@ class RecipeLoader {
         //Map foodgroups data to TS object
         return category.foodGroups.map((foodGroup: any) => {
           
-            //TODO (CONSTRUCTORS EXERCISE)
-            //Change the FoodGroup code below so that the property value is
-            //passed into the constructor rather than set individually.
-            var group = new FoodGroup();
-            group.name = foodGroup.title;
+            var group = new FoodGroup(foodGroup.title);
             return group;
         });
     }

@@ -19,21 +19,15 @@ var RecipeLoader = (function () {
         var _this = this;
         if (data) {
             var categories = data.recipeCategories;
-            //TODO (INTERFACES EXERCISE)
-            //Pass IRecipeCategory as the type to the generic below
             var recipeCategories = new RecipeCategories();
-            //TODO (INTERFACES EXERCISE)
-            //Pass IRecipeCategorySummary as the type to the generic below
             var recipeCategoriesSummary = new RecipeCategories();
             categories.forEach(function (category) {
-                //TODO (CONSTRUCTORS EXERCISE)
-                //Change the RecipeCategory code below so that the property values are
-                //passed into the constructor rather than set individually.
-                var recipeCategory = new RecipeCategory();
-                recipeCategory.name = category.title;
-                recipeCategory.foodGroups = _this.getFoodGroups(category),
-                    recipeCategory.description = category.details,
-                    recipeCategory.examples = _this.getExamples(category);
+                var recipeCategory = new RecipeCategory({
+                    name: category.title,
+                    description: category.details,
+                    examples: _this.getExamples(category),
+                    foodGroups: _this.getFoodGroups(category)
+                });
                 recipeCategories.items.push(recipeCategory);
                 var recipeCategorySummary = new RecipeCategorySummary({
                     text: category.title,
@@ -53,11 +47,7 @@ var RecipeLoader = (function () {
     RecipeLoader.prototype.getFoodGroups = function (category) {
         //Map foodgroups data to TS object
         return category.foodGroups.map(function (foodGroup) {
-            //TODO (CONSTRUCTORS EXERCISE)
-            //Change the FoodGroup code below so that the property value is
-            //passed into the constructor rather than set individually.
-            var group = new FoodGroup();
-            group.name = foodGroup.title;
+            var group = new FoodGroup(foodGroup.title);
             return group;
         });
     };

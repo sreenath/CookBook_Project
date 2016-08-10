@@ -7,14 +7,7 @@ var Bootstrapper = (function () {
             var category = this.recipeCategories.items
                 .filter(function (item) { return item.name === el.value; })
                 .reduce(function (item) {
-                //TODO (CONSTRUCTORS EXERCISE)
-                //Change the RecipeCategory code below so that the property values are
-                //passed into the constructor rather than set individually.
-                var rc = new RecipeCategory();
-                rc.name = el.value,
-                    rc.foodGroups = item.foodGroups,
-                    rc.description = item.description,
-                    rc.examples = item.examples;
+                var rc = new RecipeCategory(item);
                 return rc;
             });
             this.renderer.renderCategory(category);
