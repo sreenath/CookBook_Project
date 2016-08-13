@@ -3,11 +3,6 @@ var RecipeLoader = (function () {
     function RecipeLoader(url) {
         this.url = url;
     }
-    //TODO (GENERICS EXERCISE)
-    //1. Change the load() function's return type to use the JQueryPromise<IRecipeData> generic
-    //   This will provide the caller with much better code help as they work with the return value.
-    //2. If you're in VS Code, right-click on JQueryPromise and select "Peek Definition" from the menu
-    //3. Take a moment to explore how the JQueryPromise interface uses generics
     RecipeLoader.prototype.load = function () {
         var _this = this;
         return $.getJSON(this.url).then(function (data) {
