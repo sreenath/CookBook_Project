@@ -1,21 +1,24 @@
-﻿interface IBaseRecipeCategory {
+﻿import * as RCs from "recipeCategories";
+import * as RC from "recipeCategory";
+import * as FG from "FoodGroup";
+import * as IG from "Ingredient";
+export interface IBaseRecipeCategory {
     name: string;
-    foodGroups: FoodGroup[];
+    foodGroups: FG.FoodGroup[];
 }
 
-interface IRecipeCategory extends IBaseRecipeCategory {
+export interface IRecipeCategory extends IBaseRecipeCategory {
     description: string;
     examples: IExample[];
 }
 
-
-interface IFoodGroup {
+export interface IFoodGroup {
     name: string;
 }
 
-interface IExample {
+export interface IExample {
     name: string;
-    ingredients: Ingredient[];
+    ingredients: IG.Ingredient[];
     prepTime: string; 
 }
 
@@ -23,12 +26,12 @@ interface IIngredient {
     name: string;
 }
 
-interface IRecipeData {
-  recipeCategories?: RecipeCategories<RecipeCategory>;
-  recipeCategoriesSummary?: RecipeCategories<IRecipeCategorySummary>;
+export interface IRecipeData {
+  recipeCategories?: RCs.RecipeCategories<RC.RecipeCategory>;
+  recipeCategoriesSummary?: RCs.RecipeCategories<IRecipeCategorySummary>;
 }
 
-interface IRecipeCategorySummary {
+export interface IRecipeCategorySummary {
     text: string;
     title: string;
 }

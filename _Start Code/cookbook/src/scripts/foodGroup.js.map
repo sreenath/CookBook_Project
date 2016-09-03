@@ -1,1 +1,1 @@
-{"version":3,"file":"foodGroup.js","sourceRoot":"","sources":["foodGroup.ts"],"names":[],"mappings":"AAAA;IAEI,mBAAY,IAAY;QACtB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;IACnB,CAAC;IACL,gBAAC;AAAD,CAAC,AALD,IAKC"}
+{"version":3,"file":"FoodGroup.js","sourceRoot":"","sources":["FoodGroup.ts"],"names":[],"mappings":";;IACA;QAEI,mBAAY,IAAY;YACtB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACnB,CAAC;QACL,gBAAC;IAAD,CAAC,AALD,IAKC;IALY,iBAAS,YAKrB,CAAA"}

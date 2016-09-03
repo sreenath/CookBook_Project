@@ -1,8 +1,14 @@
-﻿class Bootstrapper {
+﻿import * as R from "renderer";
+import * as RL from "recipeLoader";
+import * as IF from "interfaces";
+import * as RCs from "recipeCategories";
+import * as RC from "recipeCategory";
+
+class Bootstrapper {
  
-  renderer: Renderer;
+  renderer: R.Renderer;
   
-  recipeCategories: RecipeCategories<IRecipeCategory>;
+  recipeCategories: RCs.RecipeCategories<IF.IRecipeCategory>;
 
   loadRecipes() {
       var el = (<HTMLSelectElement> document.getElementById('RecipeCategory'));
@@ -13,7 +19,7 @@
               //return the item
               .reduce(item => {
                 
-                var rc = new RecipeCategory(item);
+                var rc = new RC.RecipeCategory(item);
                 return rc;                
               });
           this.renderer.renderCategory(category);
@@ -25,19 +31,15 @@
       let categoriesSelect = (<HTMLSelectElement> document.getElementById('RecipeCategory'));
       categoriesSelect.onchange = () => this.loadRecipes();
 
-      let recipeLoader = new RecipeLoader("/json/recipeTypes.json");
+      let recipeLoader = new RL.RecipeLoader("/json/recipeTypes.json");
       
-      recipeLoader.load().then((recipeData: IRecipeData) => {
+      recipeLoader.load().then((recipeData: IF.IRecipeData) => {
           this.recipeCategories = recipeData.recipeCategories;
-          this.renderer = new Renderer(recipeData.recipeCategoriesSummary);
+          this.renderer = new R.Renderer(recipeData.recipeCategoriesSummary);
       });
   }
   
 }
 
-
-window.onload = () => { 
-  var bootstrapper = new Bootstrapper();
-  bootstrapper.init();
-};
-
+var bootstrapper = new Bootstrapper();
+bootstrapper.init();

@@ -1,6 +1,8 @@
-﻿class Renderer {
+﻿import * as RCs from "recipeCategories";
+import * as IF from "interfaces";
+export class Renderer {
   
-    constructor(public recipeCategoriesSummary: RecipeCategories<IRecipeCategorySummary>) {
+    constructor(public recipeCategoriesSummary: RCs.RecipeCategories<IF.IRecipeCategorySummary>) {
         if (recipeCategoriesSummary) {
             this.renderCategories(recipeCategoriesSummary);
         }
@@ -9,7 +11,7 @@
         }
     }
 
-    renderCategories(recipeCategoriesSummary: RecipeCategories<IRecipeCategorySummary>) {
+    renderCategories(recipeCategoriesSummary: RCs.RecipeCategories<IF.IRecipeCategorySummary>) {
         var recipeSelect = document.getElementById('RecipeCategory');
         recipeCategoriesSummary.items.forEach((category) => {
             var opt = document.createElement('option');
@@ -19,7 +21,7 @@
         });
     }
 
-    renderCategory(category: IRecipeCategory) {
+    renderCategory(category: IF.IRecipeCategory) {
         //Update foodgroups bullet points
         var foodGroups = (<HTMLSelectElement> document.getElementById('FoodGroups'));
         foodGroups.value = '';
@@ -37,7 +39,7 @@
 
     }
 
-    renderExamples(category: IRecipeCategory) {
+    renderExamples(category: IF.IRecipeCategory) {
         //Update examples
         var examples = (<HTMLSelectElement> document.getElementById('examples'));
         examples.value = '';
