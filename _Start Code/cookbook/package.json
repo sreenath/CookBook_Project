@@ -9,6 +9,7 @@
     "start": "concurrently \"npm run tsc:w\" \"superstatic\" "
   },
   "dependencies": {
+    "requirejs": "^2.2.0",
     "superstatic": "^4.0.2"
   },
   "devDependencies": {
@@ -20,7 +21,7 @@
     "gulp-typescript": "^2.12.1",
     "tslint": "^3.6.0",
     "typescript": "^1.8.9",
-    "typings":"^0.7.9",
+    "typings": "^0.7.9",
     "concurrently": "^2.0.0"
   }
 }
